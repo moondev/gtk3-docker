@@ -10,4 +10,6 @@ RUN pacman --noconfirm -S midori
 
 ADD init.sh /init.sh
 
+ADD dock/dock /dock
+
 CMD ["/init.sh"]
