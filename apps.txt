@@ -1,0 +1,4 @@
+xfce4-terminal
+midori
+gedit
+nautilus
