@@ -46,7 +46,20 @@ print_hello (GtkWidget *widget,
   gint      rc = 0;
 
    sh_cmd ("/usr/sbin", "midori", NULL);
-  //g_print ("Hello World\n");
+
+}
+
+static void
+print_hello2 (GtkWidget *widget,
+             gpointer   data)
+{
+
+  gchar     cmd_line[256];
+  gchar   **argv;
+  gint      argp;
+  gint      rc = 0;
+
+   sh_cmd ("/usr/sbin", "xfce4-terminal", "--show-borders");
 }
 
 static void
@@ -54,20 +67,35 @@ activate (GtkApplication *app,
           gpointer        user_data)
 {
   GtkWidget *window;
+
+
   GtkWidget *button;
   GtkWidget *button_box;
-
+  
   window = gtk_application_window_new (app);
   gtk_window_set_title (GTK_WINDOW (window), "Menu");
   gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
 
-  button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+
+  button_box = gtk_button_box_new (GTK_ORIENTATION_VERTICAL);
   gtk_container_add (GTK_CONTAINER (window), button_box);
 
   button = gtk_button_new_with_label ("Browser");
   g_signal_connect (button, "clicked", G_CALLBACK (print_hello), NULL);
   
   gtk_container_add (GTK_CONTAINER (button_box), button);
+
+  
+  GtkWidget *button2;
+  // GtkWidget *button_box2;
+
+  // button_box2 = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+  // gtk_container_add (GTK_CONTAINER (window), button_box2);
+
+  button2 = gtk_button_new_with_label ("Terminal");
+  g_signal_connect (button2, "clicked", G_CALLBACK (print_hello2), NULL);
+  
+  gtk_container_add (GTK_CONTAINER (button_box), button2);
 
   gtk_widget_show_all (window);
 }

@@ -7,4 +7,4 @@ export BROADWAY_DISPLAY=:5
 
 sleep 2
 
-xfce4-terminal
+/dock
