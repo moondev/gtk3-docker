@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
+cd dock; ./compile.sh; cd ../
+
 docker kill moonbox
+
+docker rm moonbox
 
 docker build -t chadmoon/moonbox .
 
