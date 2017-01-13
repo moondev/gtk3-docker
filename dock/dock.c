@@ -1,6 +1,7 @@
 #include <gtk/gtk.h>
 
-static gint sh_cmd (gchar * path, gchar * cmd, gchar * args)
+static gint 
+sh_cmd (gchar * path, gchar * cmd, gchar * args)
 {
   gchar     cmd_line[256];
   gchar   **argv;
@@ -73,11 +74,31 @@ activate (GtkApplication *app,
   GtkWidget *button_box;
   
   window = gtk_application_window_new (app);
-  gtk_window_set_title (GTK_WINDOW (window), "Menu");
-  gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+  
+  gtk_window_set_keep_above (GTK_WINDOW (window), TRUE);
+
+  gtk_window_set_default_size (GTK_WINDOW (window), gdk_screen_width(), 50);
+
+  gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
+
+  gtk_window_move (GTK_WINDOW (window),
+                 100,
+                 gdk_screen_width() - 50);
+  
+  //gint lp = 0;
+
+  //gtk_window_set_position (GTK_WINDOW (window), lp, lp);
+
+  // gtk_window_move (GtkWindow *window,
+  //                 gint x,
+  //                 gint y);
+  //gtk_window_move (GTK_WINDOW (window), gdk_screen_width() - window_width, gdk_screen_height());
 
 
-  button_box = gtk_button_box_new (GTK_ORIENTATION_VERTICAL);
+  button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+
+  gtk_button_box_set_layout (GTK_CONTAINER (button_box), GTK_BUTTONBOX_SPREAD);
+
   gtk_container_add (GTK_CONTAINER (window), button_box);
 
   button = gtk_button_new_with_label ("Browser");
@@ -87,15 +108,19 @@ activate (GtkApplication *app,
 
   
   GtkWidget *button2;
-  // GtkWidget *button_box2;
 
-  // button_box2 = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-  // gtk_container_add (GTK_CONTAINER (window), button_box2);
+  GtkWidget *button3;
 
   button2 = gtk_button_new_with_label ("Terminal");
   g_signal_connect (button2, "clicked", G_CALLBACK (print_hello2), NULL);
   
   gtk_container_add (GTK_CONTAINER (button_box), button2);
+
+  button3 = gtk_button_new_with_label ("Terminal2");
+  g_signal_connect (button3, "clicked", G_CALLBACK (print_hello2), NULL);
+  
+  gtk_container_add (GTK_CONTAINER (button_box), button3);
+
 
   gtk_widget_show_all (window);
 }
