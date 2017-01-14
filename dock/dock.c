@@ -91,6 +91,32 @@ run_cmd (GtkWidget *widget,
 }
 
 static void
+run_cmd2 (GtkWidget *widget,
+             gpointer   data)
+{
+
+  gchar     cmd_line[256];
+  gchar   **argv;
+  gint      argp;
+  gint      rc = 0;
+
+   sh_cmd ("/usr/sbin", "nautilus", "--new-window");
+}
+
+static void
+run_cmd3 (GtkWidget *widget,
+             gpointer   data)
+{
+
+  gchar     cmd_line[256];
+  gchar   **argv;
+  gint      argp;
+  gint      rc = 0;
+
+   sh_cmd ("/usr/sbin", "gnome-mines", "--medium");
+}
+
+static void
 activate (GtkApplication *app,
           gpointer        user_data)
 {
@@ -102,23 +128,7 @@ activate (GtkApplication *app,
   
   window = gtk_application_window_new (app);
   
-  //gtk_window_set_keep_above (GTK_WINDOW (window), TRUE);
-
-  //gtk_window_set_default_size (GTK_WINDOW (window), gdk_screen_width(), 50);
-
   gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
-
-  //gtk_window_move (GTK_WINDOW (window), 100, gdk_screen_width() - 50);
-  
-  //gint lp = 0;
-
-  //gtk_window_set_position (GTK_WINDOW (window), lp, lp);
-
-  // gtk_window_move (GtkWindow *window,
-  //                 gint x,
-  //                 gint y);
-  //gtk_window_move (GTK_WINDOW (window), gdk_screen_width() - window_width, gdk_screen_height());
-
 
   button_box = gtk_button_box_new (GTK_ORIENTATION_VERTICAL);
 
@@ -151,6 +161,18 @@ activate (GtkApplication *app,
   g_signal_connect (button4, "clicked", G_CALLBACK (run_cmd), NULL);
   
   gtk_container_add (GTK_CONTAINER (button_box), button4);
+
+  GtkWidget *button5;
+  button5 = gtk_button_new_with_label ("File Manager");
+  g_signal_connect (button5, "clicked", G_CALLBACK (run_cmd2), NULL);
+  
+  gtk_container_add (GTK_CONTAINER (button_box), button5);
+
+  GtkWidget *button6;
+  button6 = gtk_button_new_with_label ("Minesweeper");
+  g_signal_connect (button6, "clicked", G_CALLBACK (run_cmd3), NULL);
+  
+  gtk_container_add (GTK_CONTAINER (button_box), button6);
 
 
   gtk_widget_show_all (window);
