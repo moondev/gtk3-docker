@@ -36,6 +36,7 @@ sh_cmd (gchar * path, gchar * cmd, gchar * args)
 }
 
 
+
 static void
 print_hello (GtkWidget *widget,
              gpointer   data)
@@ -46,7 +47,7 @@ print_hello (GtkWidget *widget,
   gint      argp;
   gint      rc = 0;
 
-   sh_cmd ("/usr/sbin", "midori", NULL);
+   sh_cmd ("/usr/sbin", "midori", "http://news.ycombinator.com");
 
 }
 
@@ -64,6 +65,32 @@ print_hello2 (GtkWidget *widget,
 }
 
 static void
+print_hello3 (GtkWidget *widget,
+             gpointer   data)
+{
+
+  gchar     cmd_line[256];
+  gchar   **argv;
+  gint      argp;
+  gint      rc = 0;
+
+   sh_cmd ("/usr/sbin", "mypaint", "-f");
+}
+
+static void
+run_cmd (GtkWidget *widget,
+             gpointer   data)
+{
+
+  gchar     cmd_line[256];
+  gchar   **argv;
+  gint      argp;
+  gint      rc = 0;
+
+   sh_cmd ("/usr/sbin", "gedit", "--new-window");
+}
+
+static void
 activate (GtkApplication *app,
           gpointer        user_data)
 {
@@ -75,15 +102,13 @@ activate (GtkApplication *app,
   
   window = gtk_application_window_new (app);
   
-  gtk_window_set_keep_above (GTK_WINDOW (window), TRUE);
+  //gtk_window_set_keep_above (GTK_WINDOW (window), TRUE);
 
-  gtk_window_set_default_size (GTK_WINDOW (window), gdk_screen_width(), 50);
+  //gtk_window_set_default_size (GTK_WINDOW (window), gdk_screen_width(), 50);
 
   gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
 
-  gtk_window_move (GTK_WINDOW (window),
-                 100,
-                 gdk_screen_width() - 50);
+  //gtk_window_move (GTK_WINDOW (window), 100, gdk_screen_width() - 50);
   
   //gint lp = 0;
 
@@ -95,7 +120,7 @@ activate (GtkApplication *app,
   //gtk_window_move (GTK_WINDOW (window), gdk_screen_width() - window_width, gdk_screen_height());
 
 
-  button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
+  button_box = gtk_button_box_new (GTK_ORIENTATION_VERTICAL);
 
   gtk_button_box_set_layout (GTK_CONTAINER (button_box), GTK_BUTTONBOX_SPREAD);
 
@@ -116,10 +141,16 @@ activate (GtkApplication *app,
   
   gtk_container_add (GTK_CONTAINER (button_box), button2);
 
-  button3 = gtk_button_new_with_label ("Terminal2");
-  g_signal_connect (button3, "clicked", G_CALLBACK (print_hello2), NULL);
+  button3 = gtk_button_new_with_label ("MyPaint");
+  g_signal_connect (button3, "clicked", G_CALLBACK (print_hello3), NULL);
   
   gtk_container_add (GTK_CONTAINER (button_box), button3);
+
+  GtkWidget *button4;
+  button4 = gtk_button_new_with_label ("Gedit");
+  g_signal_connect (button4, "clicked", G_CALLBACK (run_cmd), NULL);
+  
+  gtk_container_add (GTK_CONTAINER (button_box), button4);
 
 
   gtk_widget_show_all (window);
