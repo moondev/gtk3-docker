@@ -3,8 +3,7 @@
 nohup broadwayd :5 &
 
 mkdir -p /root/Desktop
-mkdir -p /root/.config
 mkdir -p /root/.config/nautilus
 sleep 2
 
-/opt/dock
+/dock
