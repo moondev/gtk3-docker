@@ -2,7 +2,7 @@ FROM pritunl/archlinux:latest
 
 EXPOSE 8085
 
-RUN pacman --noconfirm -S gtk3 xfce4 midori mypaint gedit nautilus gnome-mines
+RUN pacman --noconfirm -S gtk3 xfce4 midori mypaint gedit nautilus gnome-mines htop
 
 ENV GDK_BACKEND broadway
 
