@@ -7,4 +7,5 @@ mkdir -p /root/.config/nautilus
 sleep 5
 
 #xfce4-terminal
-remmina
+#remmina
+nautilus
