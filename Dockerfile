@@ -10,6 +10,8 @@ RUN pacman --noconfirm -S arc-gtk-theme git wget yajl dub dmd terminator
 
 RUN pacman -S --noconfirm --needed base-devel 
 
+RUN pacman -S --noconfirm gnome gnome-extra mate mate-extra
+
 #useradd -m -g user bash user
 
 ENV GDK_BACKEND broadway
