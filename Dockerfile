@@ -6,7 +6,7 @@ EXPOSE 8085
 
 RUN pacman --noconfirm -S gtk3 xfce4 midori mypaint gedit nautilus gnome-mines htop gcc pkg-config gjs vim gnome-terminal gnome-tweak-tool
 #toilix
-RUN pacman --noconfirm -S arc-gtk-theme git wget yajl yaourt dub dmd terminator
+RUN pacman --noconfirm -S arc-gtk-theme git wget yajl dub dmd terminator
 
 RUN pacman -S --noconfirm --needed base-devel 
 
