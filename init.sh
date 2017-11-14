@@ -10,4 +10,5 @@ sleep 5
 #remmina
 #nautilus
 #gnome-terminal
-/tilix/tilix
+#/tilix/tilix
+midori
