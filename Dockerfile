@@ -1,12 +1,10 @@
 FROM pritunl/archlinux:latest
 
-ADD dock/dock.c /opt/dock.c
+COPY gjs /gjs
 
 EXPOSE 8085
 
-RUN pacman --noconfirm -S gtk3 xfce4 midori mypaint gedit nautilus gnome-mines htop gcc pkg-config && \
-    cd /opt/ && \
-    gcc `pkg-config --cflags gtk+-3.0` -o dock dock.c `pkg-config --libs gtk+-3.0`
+RUN pacman --noconfirm -S gtk3 xfce4 midori mypaint gedit nautilus gnome-mines htop gcc pkg-config gjs remmina
 
 ENV GDK_BACKEND broadway
 ENV BROADWAY_DISPLAY :5

@@ -6,4 +6,5 @@ mkdir -p /root/Desktop
 mkdir -p /root/.config/nautilus
 sleep 2
 
-/dock
+#xfce4-terminal
+nautilus
