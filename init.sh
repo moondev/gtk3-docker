@@ -12,3 +12,5 @@ sleep 5
 #gnome-terminal
 /tilix/tilix
 #midori
+cd /gjs
+gjs window.js
