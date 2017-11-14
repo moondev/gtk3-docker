@@ -12,7 +12,7 @@ RUN pacman -S --noconfirm --needed base-devel
 
 RUN pacman -S --noconfirm gnome gnome-extra mate mate-extra
 
-RUN git clone https://github.com/gnunn1/tilix.git; cd tilix; ./install.sh; dub build --build=release
+RUN git clone https://github.com/gnunn1/tilix.git; cd tilix; dub build --build=release; ./install.sh
 
 #useradd -m -g user bash user
 
