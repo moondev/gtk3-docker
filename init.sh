@@ -12,7 +12,7 @@ sleep 5
 #gnome-terminal
 #/tilix/tilix
 #midori
-gsettings set org.gnome.desktop.interface gtk-theme 
+gsettings set org.gnome.desktop.interface gtk-theme Arc-Darker
 
 git clone https://github.com/optimisme/gjs-examples.git
 cd /gjs-examples
