@@ -10,7 +10,12 @@ sleep 5
 #remmina
 #nautilus
 #gnome-terminal
-/tilix/tilix
+#/tilix/tilix
 #midori
-cd /gjs
-gjs window.js
+gsettings set org.gnome.desktop.interface gtk-theme 
+
+git clone https://github.com/optimisme/gjs-examples.git
+cd /gjs-examples
+gjs egHeader.js
+# cd /gjs
+# gjs window.js
